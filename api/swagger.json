@@ -1,0 +1,116 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "Red Social Node",
+      "description": "Una red social en NodeJs",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api"
+      }
+    ],
+    "tags": [
+      {
+        "name": "user",
+        "description": "Operaciones sobre el usuario"
+      }
+    ],
+    "paths": {
+      "/user": {
+        "get": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Lista los usuarios",
+          "operationId": "listUser",
+          "responses": {
+            "default": {
+              "description": "Lista de Usuarios"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "user"
+          ],
+          "summary": "Crea un usuario",
+          "description": "Crea un usuario en nuestra app.",
+          "operationId": "createUser",
+          "requestBody": {
+            "description": "Usuario Creado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "responses": {
+            "default": {
+              "description": "successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                },
+                "application/xml": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "User": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "username": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            }
+          }
+        },
+        "ApiResponse": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "type": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "xml": {
+            "name": "##default"
+          }
+        }
+      }
+    }
+  }
