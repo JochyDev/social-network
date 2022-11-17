@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node api/index.js",
     "start:dev": "nodemon api/index.js",
-    "start:mysqlSvr": "nodemon mysql/index.js"
+    "start:mysql": "nodemon mysql/index.js",
+    "start:post": "nodemon post/index.js"
   },
   "author": "",
   "license": "ISC",
