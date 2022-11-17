@@ -19,6 +19,19 @@ module.exports = function(injectedStore){
         return store.get(TABLE, id)
     }
 
+    function followers(id){
+        const join = {}
+        join[TABLE] = 'user_to'
+        return store.query(TABLE + '_follow', {user_from: id}, join)
+    }
+
+    function follow(from, to){
+        return store.upsert(TABLE + '_follow', {
+            user_from: from,
+            user_to: to
+        })
+    }
+
     async function upsert(body){
         const user = {
             name: body.name,
@@ -28,7 +41,8 @@ module.exports = function(injectedStore){
 
         if(body.id){
             user.id = body.id;
-        }else {
+        }
+        else {
             user.id = uuidv4()
         }
 
@@ -41,6 +55,7 @@ module.exports = function(injectedStore){
         }
 
         return store.upsert(TABLE, user)
+
     }
 
     function remove(id){
@@ -51,6 +66,8 @@ module.exports = function(injectedStore){
         list,
         get,
         upsert,
-        remove
+        remove,
+        follow,
+        followers
     }
 }
