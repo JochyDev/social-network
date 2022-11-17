@@ -1,3 +1,6 @@
+
+const TABLE = 'post';
+
 module.exports = function(injectedStore){
 
     let store = injectedStore;
@@ -7,6 +10,10 @@ module.exports = function(injectedStore){
     }
 
     function list(){
-        
+        return store.list(TABLE)
+    }
+
+    return {
+        list
     }
 }

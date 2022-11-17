@@ -6,7 +6,7 @@ const Controller = require('./index');
 const router = express.Router();
 
 
-router.get('/',       list);
+router.get('/', list);
 
 function list( req, res, next ) {
     Controller.list()
